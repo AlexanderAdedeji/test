@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import axios from 'axios';
 
-function App() {
+const MyComponent = () => {
+  const fetchData = async () => {
+    try {
+      // Replace with your actual endpoint
+      const response = await axios.get('https://card-tracker-tsfs.onrender.com/card_tracker/card_management/search/LA0010001951'); 
+      console.log(response.data);
+      // Perform any additional logic with the received data here
+    } catch (error) {
+      console.error('There was an error fetching the data: ', error);
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
-}
+};
 
-export default App;
+export default MyComponent;
